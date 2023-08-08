@@ -197,7 +197,7 @@ function imprimirOResultado() {
     for (const perfil of perfisResposta) {
         const corPerfil = coresPerfis[perfil];
         const spanTag = `
-        <span style="background-color: rgba(255, 255, 255, 0.5); padding-left: 2px; padding-right: 2px;">
+        <span style="background-color: rgba(255, 255, 255, 0.5); padding-left: 2px; padding-right: 2px; margin: 2px;">
         <span style="color: ${corPerfil};">${perfil.toUpperCase()}</span>
         </span>`
         resultadoFinal += ` ${spanTag}`;
