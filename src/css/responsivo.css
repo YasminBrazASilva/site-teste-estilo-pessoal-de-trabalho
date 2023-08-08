@@ -1,0 +1,14 @@
+@media (max-width: 1120px){
+    .cabecalho .logo{
+        max-width: 190px;
+    }
+
+    .gridOpcoes button {
+        width: 100%;
+        height: 70px;
+        padding: 10px;
+        font-size: 18px;
+        margin: 0px;
+    }
+}
+
