@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automec - teste perfil de trabalho</title>
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/estilos.css">
+</head>
+
+<body>
+    <header>
+        <img src="./src/imagens/log-automec-sem-fundo.png" class="cabecalho" alt="Cabeçalho">
+    </header>
+    <main>
+        <h1 class="titulo-da-pagina">Teste de EPT</h1>
+        <h2>Teste de Estilo Pessoal de Trabalho</h2>
+        <div class="grupoIntroducao" id="grupoIntroducao">
+            <p>O teste Business Chemistry, também conhecido como Teste de EPT (Estilo Pessoal de Trabalho), foi criado
+                por Kim Christfort e Suzanne Vickberg e define 4 perfis de trabalho: Pioneiro, Conciliador, Condutor e
+                Guardião</p>
+            <p>Todos nós somos uma combinação única de todos os quatro estilos, mas a maioria das pessoas se associa
+                fortemente a um ou dois estilos que caracterizam seus comportamentos sociais.</p>
+            <p>A seguir, serão apresentados 15 grupos de palavras e, de cada um deles, escolha aquela lhe agrada mais.
+            </p>
+            <p>Não demore a escolher, faça isso o mais rápido que puder, com base em sua reação imediata ou intuitiva às
+                palavras.</p>
+            <p>Quando estiver pronto, clique em "Começar" para iniciar.</p>
+        </div>
+
+        <section class="oculto grupoProgresso" id="grupoProgresso">
+            <progress id="barraProgresso" max="100" value="0"></progress>
+            <div id="progressoDetalhe">0%</div>
+        </section>
+
+        <section class="oculto gruopoDetalheUsuario" id="gruopoDetalheUsuario">
+            <label for="nomeCompleto">Nome Completo:</label>
+            <input type="text" id="nomeCompleto" name="nomeCompleto" required><br>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required><br>
+            <button id="ok">OK</button>
+        </section>
+
+        <section class="grupoBotoes">
+            <button id="botaoComecar">Começar</button>
+            <section id="grupoOpcoes" class="oculto">
+                <div class="gridOpcoes"></div>
+
+            </section>
+            <button id="botaoProxima" class="oculto">Próxima</button>
+            <section class="resultado">
+                <div class="textoFinal" id="textoFinal"></div>
+                <div class="textosResultados" id="textosResultados"></div>
+
+            </section>
+        </section>
+    </main>
+    <script src="./src/js/index.js"></script>
+</body>
+
+</html>

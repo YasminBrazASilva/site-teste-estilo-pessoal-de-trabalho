@@ -1,0 +1,135 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    color: whitesmoke;
+}
+
+body::before {
+    content: "";
+    background-image: url(../imagens/fundo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+    opacity: 0.9;
+}
+
+header {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+header img {
+    align-content: center;
+    height: 100px;
+}
+
+h1 {
+    text-align: center;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    font-size: 19px;
+}
+
+main {
+    max-width: 800px;
+    margin-top: 20px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    background-color: #ebd762e0;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+p {
+    margin: 20px;
+    text-align: justify;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.gruopoDetalheUsuario{
+    text-align: center;
+}
+
+.grupoProgresso {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    accent-color: #0f3f5f;
+    font-size: 15px;
+    align-items: center;
+}
+
+.grupoProgresso div{
+   margin: 10px;
+}
+
+
+.grupoBotoes {
+    text-align: center;
+}
+
+.gridOpcoes{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.gridOpcoes button {
+    width: 100%;
+    height: 45px;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.textoFinal {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+.textosResultados{
+    text-align: justify;
+    font-size: 18px;
+}
+
+
+.selecionada {
+    background-color: #0f3f5f;
+}
+
+.oculto {
+    display: none;
+}
