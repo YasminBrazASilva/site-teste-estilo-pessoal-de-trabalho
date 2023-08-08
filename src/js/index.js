@@ -161,8 +161,8 @@ const descricaoPerfis = {
     <div>Desestimulado por: Indecisão, Ineficiência, Falta de foco</div>`,
 
     'Guardião': `<div>GUARDIÕES</div>
-    <div>Gostam da realidade concreta, eles respeitam o que é experimentado e  aprovado “Verdadeiro”.
-    Valorizam a estabilidade e contribuem com	ordem e rigor. São pragmáticos e  hesitam em abraçar o risco. Para eles, dados e fatos são requisitos  indispensáveis, e eles priorizam os detalhes. Acreditam que é razoável  aprender como passado.</div>
+    <div>Gostam da realidade concreta, eles respeitam o que é experimentado e aprovado “Verdadeiro”.
+    Valorizam a estabilidade e contribuem com ordem e rigor. São pragmáticos e  hesitam em abraçar o risco. Para eles, dados e fatos são requisitos  indispensáveis, e eles priorizam os detalhes. Acreditam que é razoável  aprender como passado.</div>
     <div> Estimulado por: Organização, Previsibilidade e Consistência, Plano detalhado  </div>
     <div>Desestimulado por: Desordem, Pressão por prazos, Ambiguidade e Incerteza </div>`,
 
@@ -197,7 +197,7 @@ function imprimirOResultado() {
     for (const perfil of perfisResposta) {
         const corPerfil = coresPerfis[perfil];
         const spanTag = `
-        <span style="background-color: rgba(255, 255, 255, 0.5); padding: 2px;">
+        <span style="background-color: rgba(255, 255, 255, 0.5); padding-left: 2px; padding-right: 2px;">
         <span style="color: ${corPerfil};">${perfil.toUpperCase()}</span>
         </span>`
         resultadoFinal += ` ${spanTag}`;
