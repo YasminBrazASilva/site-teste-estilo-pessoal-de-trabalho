@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <img src="./src/imagens/log-automec-sem-fundo.png" class="cabecalho" alt="Cabeçalho">
+        <img src="./src/imagens/logo-sem-fundo.png" class="cabecalho" alt="Cabeçalho">
     </header>
     <main>
         <h1 class="titulo-da-pagina">Teste de EPT</h1>
@@ -35,7 +35,7 @@
             <div id="progressoDetalhe">0%</div>
         </section>
 
-        <section class="oculto gruopoDetalheUsuario" id="gruopoDetalheUsuario">
+        <section class="oculto grupoDetalheUsuario" id="grupoDetalheUsuario">
             <label for="nomeCompleto">Nome Completo:</label>
             <input type="text" id="nomeCompleto" name="nomeCompleto" required><br>
 
@@ -46,17 +46,22 @@
 
         <section class="grupoBotoes">
             <button id="botaoComecar">Começar</button>
+
             <section id="grupoOpcoes" class="oculto">
                 <div class="gridOpcoes"></div>
-
             </section>
+
             <button id="botaoProxima" class="oculto">Próxima</button>
+
             <section class="resultado">
                 <div class="textoFinal" id="textoFinal"></div>
                 <div class="textosResultados" id="textosResultados"></div>
-
             </section>
+
+            <button type="submit" id="botaoEnviar" class="oculto">ENVIAR</button>
         </section>
+
+
     </main>
     <script src="./src/js/index.js"></script>
 </body>
