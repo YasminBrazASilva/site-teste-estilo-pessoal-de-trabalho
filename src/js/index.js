@@ -1,16 +1,20 @@
 const botaoComecar = document.getElementById('botaoComecar');
 const grupoIntroducao = document.getElementById('grupoIntroducao');
-const gruopoDetalheUsuario = document.getElementById('gruopoDetalheUsuario');
+const grupoDetalheUsuario = document.getElementById('grupoDetalheUsuario');
 const botaoOk = document.getElementById('ok');
 const grupoOpcoes = document.getElementById('grupoOpcoes');
 const botaoProxima = document.getElementById('botaoProxima');
+const botaoEnviar = document.getElementById('botaoEnviar');
 const grupoProgresso = document.getElementById('grupoProgresso');
 const barraProgresso = document.getElementById('barraProgresso');
 const progressoDetalhe = document.getElementById('progressoDetalhe');
 const textoFinal = document.getElementById('textoFinal');
 const textosResultados = document.getElementById('textosResultados');
 
+let dados = {};
 let indiceQuestaoAtual = 0;
+let nomeCompletoResposta = '';
+let emailResposta = '';
 const respostasSelecionadas = [];
 
 const questoes = [
@@ -31,6 +35,7 @@ const questoes = [
     { opcoes: ['Vencer', 'Manter', 'Recuar', 'Arriscar'] }
 ];
 
+
 botaoComecar.addEventListener('click', () => {
     comecar();
 });
@@ -38,24 +43,34 @@ botaoComecar.addEventListener('click', () => {
 function comecar() {
     botaoComecar.classList.add('oculto');
     grupoIntroducao.classList.add('oculto');
-    gruopoDetalheUsuario.classList.remove('oculto');
+
+    grupoDetalheUsuario.classList.remove('oculto');
 }
 
 
 botaoOk.addEventListener('click', () => {
-    const nomeCompleto = document.getElementById('nomeCompleto').value;
-    const email = document.getElementById('email').value;
+    nomeCompletoResposta = document.getElementById('nomeCompleto').value;
+    emailResposta = document.getElementById('email').value;
 
-    if (!nomeCompleto || !email) {
+    if (!nomeCompletoResposta || !emailResposta) {
         alert('Por favor, preencha seu nome completo e e-mail.');
         return;
     }
 
+    salvarDados("nomeCompleto", nomeCompletoResposta);
+    salvarDados("email", emailResposta);
     iniciarTeste();
 });
 
+
+function salvarDados(titulo, objeto) {
+    dados[titulo] = objeto;
+
+};
+
 function iniciarTeste() {
-    gruopoDetalheUsuario.classList.add('oculto');
+    grupoDetalheUsuario.classList.add('oculto');
+
     grupoProgresso.classList.remove('oculto');
     grupoOpcoes.classList.remove('oculto');
     mostrarQuestao(0);
@@ -76,7 +91,7 @@ function mostrarQuestao(indiceQuestaoAtual) {
 
             removerSelecaoAnterior();
             alternativa.classList.add('selecionada');
-            amazenarResposta(opcaoIndex);
+            armazenarResposta(opcaoIndex);
 
         });
         gridOpcoes.appendChild(alternativa);
@@ -92,22 +107,24 @@ function removerSelecaoAnterior() {
     }
 }
 
-function amazenarResposta(selectedIndex) {
+function armazenarResposta(selectedIndex) {
     respostasSelecionadas[indiceQuestaoAtual] = selectedIndex;
-    botaoProxima.classList.remove('oculto');
-}
 
+    if (indiceQuestaoAtual < questoes.length - 1) {
+        botaoProxima.classList.remove('oculto');
+    } else {
+        botaoEnviar.classList.remove('oculto');
+    }
+};
 
 
 botaoProxima.addEventListener('click', () => {
     indiceQuestaoAtual++;
-    botaoProxima.classList.add("oculto")
+    botaoProxima.classList.add("oculto");
 
     if (indiceQuestaoAtual < questoes.length) {
         mostrarQuestao(indiceQuestaoAtual);
         atualizarProgresso();
-    } else {
-        finalizarTeste();
     }
 });
 
@@ -117,15 +134,43 @@ function atualizarProgresso() {
     barraProgresso.value = progressoAtual;
 };
 
+
+botaoEnviar.addEventListener('click', () => {
+    botaoEnviar.classList.add("oculto");
+    finalizarTeste();
+});
+
 function finalizarTeste() {
     grupoOpcoes.classList.add("oculto");
     grupoProgresso.classList.add("oculto");
-    
+
     const [resultadoFinal, descricaoFinal] = imprimirOResultado();
-    
+
     textoFinal.innerHTML = resultadoFinal;
     textosResultados.innerHTML = descricaoFinal;
+
+    enviarDadosParaPlanilha(dados);
+
 };
+
+
+function enviarDadosParaPlanilha(dados) {
+    fetch('https://script.google.com/macros/s/AKfycbz8ND2Tt4h3d8xl-d_EHRqhsD5B81UeRQa2FORQagTXNOQLdyrhUc72QSrKxgUOAbl1/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams(dados)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.result);
+        })
+        .catch(error => {
+            console.error('Erro ao armazenar os dados na planilha:', error);
+        });
+};
+
 
 // CÁLCULOS PARA DEFINIR O PERFIL DO USUÁRIO
 const gabarito = [
@@ -153,61 +198,46 @@ const perfis = {
     'Pioneiro': 'P'
 };
 
+
+
 const descricaoPerfis = {
-    'Condutor': `<div>CONDUTORES</div>
-    <div>Gostam de examinar profundamente os sistemas, são lógicos e se aprofundam na  análise, participam em discussões envolvendo lógica, pensam criticamente e têm  disposição para o debate. Falam diretamente e diz o que está em suas mentes.
-    Valorizam o desafio e geram MOMENTUM. Para eles é muito importante obter  resultados e vencer. Para os condutores, as questões são preto no branco. Eles  atacam os problemas de frente, armados com dados e lógica.</div>
-    <div>Estimulado por: Resolução de problemas, Integridade de caráter e Vencer</div>  
-    <div>Desestimulado por: Indecisão, Ineficiência, Falta de foco</div>`,
-
-    'Guardião': `<div>GUARDIÕES</div>
-    <div>Gostam da realidade concreta, eles respeitam o que é experimentado e aprovado “Verdadeiro”.
-    Valorizam a estabilidade e contribuem com ordem e rigor. São pragmáticos e  hesitam em abraçar o risco. Para eles, dados e fatos são requisitos  indispensáveis, e eles priorizam os detalhes. Acreditam que é razoável  aprender como passado.</div>
-    <div> Estimulado por: Organização, Previsibilidade e Consistência, Plano detalhado  </div>
-    <div>Desestimulado por: Desordem, Pressão por prazos, Ambiguidade e Incerteza </div>`,
-
-    'Conciliador': `<div>CONCILIADORES</div>
-    Gostam de se conectar em um nível pessoal e descobrir como as peças se
-    encaixam. Conciliadores valorizam as relações e mantêm as equipes unidas.  Relacionamentos e responsabilidades são indispensáveis para o grupo. Os  conciliadores tendem a acreditar que, em geral, as coisas são relativas. São diplomáticos e preocupados em chegar ao consenso.</div>
-    <div>Estimulado por: Colaboração, Comunicação, Confiança	e Respeito</div> 
-    <div>Desestimulado por: Políticas, Conflitos, Inflexibilidade</div>`,
-
-    'Pioneiro': `<div>PIONEIROS</div>
-    <div>Gostam de varias possibilidades (variedades).  Amam gerar novas ideias. Valorizam os talentos e disparam centelhas de energia e imaginação em  sua equipes. Eles acreditam que vale a pena assumir riscos e que é bom  seguir seus instintos. Focam no panorama. São atraídos por novas ideias  audaciosas e abordagens criativas.</div>
-    <div>Estimulado por: Brainstorming, Espontaneidade, tentar coisas novas e  entusiasmo</div>
-    <div>Desestimulado por: Regras e Estruturas, A palavra NÃO e foco no  processo</div>`
-}
+    'Condutor': `<img src="./src/imagens/Condutores.jpg" alt="Imagem de Condutores" class="perfil-imagem">`,
+    'Guardião': `<img src="./src/imagens/Guardioes.jpg" alt="Imagem de Guardioes" class="perfil-imagem">`,
+    'Conciliador': `<img src="./src/imagens/Conciliadores.jpg" alt="Imagem de Conciliadores" class="perfil-imagem">`,
+    'Pioneiro': `<img src="./src/imagens/Pioneiros.jpg" alt="Imagem de Pioneiros" class="perfil-imagem">`
+};
 
 const coresPerfis = {
-    'Condutor': '#EF3C28',
-    'Guardião': '#2121D7',
-    'Conciliador': '#49AA4B',
-    'Pioneiro': '#F9BF1D'
+    'Condutor': '#F03E24',
+    'Guardião': '#4A70B7',
+    'Conciliador': '#43A848',
+    'Pioneiro': '#FDAF1B'
 };
 
 
 function imprimirOResultado() {
-    const [letrasEcolhidas, porcentagens] = calcularAsPorcentagens();
-    let perfisResposta = definirOPerfil(porcentagens);
+    let perfisResposta = definirOPerfil();
 
     let resultadoFinal = `<div>TESTE FINALIZADO!</div>
     <div>Parabéns, o seu perfil é:</div>`;
     let descricaoFinal = '';
-    
+
     for (const perfil of perfisResposta) {
         const corPerfil = coresPerfis[perfil];
-        const spanTag = `
-        <span style="background-color: rgba(255, 255, 255, 0.5); padding-left: 2px; padding-right: 2px;">
-        <span style="color: ${corPerfil};">${perfil.toUpperCase()}</span>
-        </span>`
+        const spanTag = `<span style="color: ${corPerfil};">${perfil.toUpperCase()}</span>`
         resultadoFinal += ` ${spanTag}`;
         descricaoFinal += `<br><div>${descricaoPerfis[perfil]}</div>`;
-    }  
+    };
+
+    const perfilFinal = perfisResposta.map(item => item.toUpperCase()).join(' ');
+    salvarDados("perfil", perfilFinal);
 
     return [resultadoFinal, descricaoFinal];
 };
 
-function definirOPerfil(porcentagens) {
+function definirOPerfil() {
+    const porcentagens = calcularAsPorcentagens();
+
     const porcentagensOrdenadas = Object.fromEntries(
         Object.entries(porcentagens).sort((a, b) => b[1] - a[1])
     );
@@ -230,8 +260,8 @@ function definirOPerfil(porcentagens) {
 }
 
 function calcularAsPorcentagens() {
-    const qtdeAlternativas = gabarito.length;
     const letrasEcolhidas = checarGabarito();
+    const qtdeAlternativas = gabarito.length;
 
     const qtdeLetras = {};
     for (let i = 0; i < letrasEcolhidas.length; i++) {
@@ -247,7 +277,7 @@ function calcularAsPorcentagens() {
         resultado[perfil] = parseFloat((qtde / qtdeAlternativas * 100).toFixed(1));
     }
 
-    return [letrasEcolhidas, resultado];
+    return resultado;
 };
 
 function checarGabarito() {
@@ -256,7 +286,11 @@ function checarGabarito() {
     for (let i = 0; i < respostasSelecionadas.length; i++) {
         const letra = gabarito[i][respostasSelecionadas[i]];
         respostasLetras.push(letra);
-    }
+    };
+
+    for (let i = 0; i < respostasLetras.length; i++) {
+        salvarDados(`pergunta${i+1}`, respostasLetras[i]);
+    };
 
     return respostasLetras;
 };
