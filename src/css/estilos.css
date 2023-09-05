@@ -3,12 +3,12 @@ body {
     font-size: 20px;
     margin: 0;
     padding: 0;
-    color: whitesmoke;
+    color: black;
 }
 
 body::before {
     content: "";
-    background-image: url(../imagens/fundo.jpg);
+    background-color: #E8E0DE;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -76,7 +76,7 @@ input[type="email"] {
     border-radius: 4px;
 }
 
-.gruopoDetalheUsuario{
+.grupoDetalheUsuario{
     text-align: center;
 }
 
@@ -125,9 +125,15 @@ input[type="email"] {
     font-size: 18px;
 }
 
+.perfil-imagem{
+    display: block;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
 
 .selecionada {
-    background-color: #0f3f5f;
+    background-color: yellowgreen;
 }
 
 .oculto {
