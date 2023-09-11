@@ -65,7 +65,6 @@ botaoOk.addEventListener('click', () => {
 
 function salvarDados(titulo, objeto) {
     dados[titulo] = objeto;
-
 };
 
 function iniciarTeste() {
@@ -148,10 +147,31 @@ function finalizarTeste() {
 
     textoFinal.innerHTML = resultadoFinal;
     textosResultados.innerHTML = descricaoFinal;
+    criarBarrasDePorcentagem()
+
 
     enviarDadosParaPlanilha(dados);
 
 };
+
+function criarBarrasDePorcentagem() {
+    const perfisPorcentagens = calcularAsPorcentagens();
+    const barraPorcentagemContainer = document.getElementById('barraPorcentagem');
+
+    for (const perfil in perfisPorcentagens) {
+        const porcentagem = perfisPorcentagens[perfil];
+        const barra = document.createElement('div');
+        barra.style.backgroundColor = coresPerfis[perfil];
+        barra.style.width = `${porcentagem}%`;
+        barra.classList.add('barra-porcentagem'); // Classe para estilizar as barras no CSS
+
+        const label = document.createElement('span');
+        label.textContent = `${porcentagem}%`;
+
+        barra.appendChild(label);
+        barraPorcentagemContainer.appendChild(barra);
+    }
+}
 
 
 function enviarDadosParaPlanilha(dados) {
@@ -197,7 +217,6 @@ const perfis = {
     'Conciliador': 'I',
     'Pioneiro': 'P'
 };
-
 
 
 const descricaoPerfis = {
@@ -274,7 +293,9 @@ function calcularAsPorcentagens() {
 
     for (const perfil of perfisChaves) {
         const qtde = qtdeLetras[perfis[perfil]];
-        resultado[perfil] = parseFloat((qtde / qtdeAlternativas * 100).toFixed(1));
+        const qtdeNumerico = isNaN(qtde) ? 0 : qtde;
+        resultado[perfil] = parseFloat((qtdeNumerico / qtdeAlternativas * 100).toFixed(1));
+        salvarDados(perfil, `${resultado[perfil]}%`)
     }
 
     return resultado;

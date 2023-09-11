@@ -131,6 +131,22 @@ input[type="email"] {
     max-width: 90%;
 }
 
+.barra-porcentagem {
+    display: inline-block;
+    height: 30px;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.barra-porcentagem span {
+    display: block;
+    height: 100%;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-size: 16px;
+}
+
 
 .selecionada {
     background-color: yellowgreen;
