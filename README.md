@@ -1,5 +1,6 @@
 <h1 align="center"> Site para teste de estilo pessoal de trabalho </h1>
-![Cabeçalho do site](https://github.com/YasminBrazASilva/site-automec-ept/assets/141586083/4b676dba-558f-4b6f-8a2d-c07089bf69ef)
+![Cabeçalho do site](src/imagens/cabecalho_site_completo.png)
+
 
 Projeto de um site para teste de perfil de trabalho para a empresa Automec, nele, foi utilizado HTML, CSS e JavaScript. As respostas dos usuários são salvas diretamente em um Google Sheets.
 
