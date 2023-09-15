@@ -1,6 +1,6 @@
 <h1 align="center"> Site para teste de estilo pessoal de trabalho </h1>
 
-Projeto de um site para teste de perfil de trabalho para a empresa Automec, nele, foi utilizado HTML, CSS e JavaScript. As respostas dos usuários são salvas diretamente em um Google Sheets.
+Projeto de um site para teste de perfil de trabalho para empresas, nele, foi utilizado HTML, CSS e JavaScript. As respostas dos usuários são salvas diretamente em um Google Sheets.
 
 > :construction: Projeto em construção :construction:
 
