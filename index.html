@@ -18,15 +18,10 @@
         <h1 class="titulo-da-pagina">Teste de EPT</h1>
         <h2>Teste de Estilo Pessoal de Trabalho</h2>
         <div class="grupoIntroducao" id="grupoIntroducao">
-            <p>O teste Business Chemistry, também conhecido como Teste de EPT (Estilo Pessoal de Trabalho), foi criado
-                por Kim Christfort e Suzanne Vickberg e define 4 perfis de trabalho: Pioneiro, Conciliador, Condutor e
-                Guardião</p>
-            <p>Todos nós somos uma combinação única de todos os quatro estilos, mas a maioria das pessoas se associa
-                fortemente a um ou dois estilos que caracterizam seus comportamentos sociais.</p>
-            <p>A seguir, serão apresentados 15 grupos de palavras e, de cada um deles, escolha aquela lhe agrada mais.
-            </p>
-            <p>Não demore a escolher, faça isso o mais rápido que puder, com base em sua reação imediata ou intuitiva às
-                palavras.</p>
+            <p>O teste Business Chemistry, também conhecido como Teste de EPT (Estilo Pessoal de Trabalho), foi criado por Kim Christfort e Suzanne Vickberg e define 4 perfis de trabalho: Pioneiro, Conciliador, Condutor e Guardião.</p>
+            <p>Todos nós somos uma combinação única de todos os quatro estilos, mas a maioria das pessoas se associa fortemente a um ou dois estilos que caracterizam seus comportamentos sociais.</p>
+            <p>A seguir, serão apresentados 15 grupos de palavras e, de cada um deles, escolha aquela lhe agrada mais.</p>
+            <p>Não demore a escolher, faça isso o mais rápido que puder, com base em sua reação imediata ou intuitiva às palavras.</p>
             <p>Quando estiver pronto, clique em "Começar" para iniciar.</p>
         </div>
 
@@ -36,32 +31,36 @@
         </section>
 
         <section class="oculto grupoDetalheUsuario" id="grupoDetalheUsuario">
-            <label for="nomeCompleto">Nome Completo:</label>
+            <label for="nomeCompleto">Nome completo:</label>
             <input type="text" id="nomeCompleto" name="nomeCompleto" required><br>
 
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" required><br>
+            
+            <label for="Empresa">Empresa:</label>
+            <select id="empresa" name="empresa">
+                <option value="">Selecione uma empresa</option>
+                <option value="Automec">Automec</option>
+                <option value="Outras">Outras</option>
+            </select>
+
             <button id="ok">OK</button>
         </section>
 
         <section class="grupoBotoes">
             <button id="botaoComecar">Começar</button>
 
-            <section id="grupoOpcoes" class="oculto">
-                <div class="gridOpcoes"></div>
-            </section>
+            <div id="grupoOpcoes" class="oculto grupoOpcoes"></div>
 
             <button id="botaoProxima" class="oculto">Próxima</button>
-
-            <section class="resultado">
-                <div class="textoFinal" id="textoFinal"></div>
-                <div class="barraPorcentagem" id="barraPorcentagem"></div>
-                <div class="textosResultados" id="textosResultados"></div>
-            </section>
-
             <button type="submit" id="botaoEnviar" class="oculto">ENVIAR</button>
         </section>
 
+        <section class="resultado">
+            <div class="textoFinal" id="textoFinal"></div>
+            <div class="barraPorcentagem" id="barraPorcentagem"></div>
+            <div class="imagensResultados" id="imagensResultados"></div>
+        </section>
 
     </main>
     <script src="./src/js/index.js"></script>

@@ -67,6 +67,10 @@ p {
     text-align: justify;
 }
 
+label {
+    font-size: 16px;
+}
+
 input[type="text"],
 input[type="email"] {
     width: 100%;
@@ -76,9 +80,19 @@ input[type="email"] {
     border-radius: 4px;
 }
 
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 100%;
+    outline: none;
+}
+
 .grupoDetalheUsuario{
     text-align: center;
 }
+
 
 .grupoProgresso {
     display: flex;
@@ -88,25 +102,21 @@ input[type="email"] {
     accent-color: #0f3f5f;
     font-size: 15px;
     align-items: center;
+    gap: 10px;
 }
-
-.grupoProgresso div{
-   margin: 10px;
-}
-
 
 .grupoBotoes {
     text-align: center;
 }
 
-.gridOpcoes{
+.grupoOpcoes{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
     text-align: center;
 }
 
-.gridOpcoes button {
+.grupoOpcoes button {
     width: 100%;
     height: 45px;
     font-size: 20px;
@@ -120,7 +130,7 @@ input[type="email"] {
     margin-bottom: 30px;
 }
 
-.textosResultados{
+.imagensResultados{
     text-align: justify;
     font-size: 18px;
 }
@@ -146,7 +156,6 @@ input[type="email"] {
     color: white;
     font-size: 16px;
 }
-
 
 .selecionada {
     background-color: yellowgreen;
