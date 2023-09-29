@@ -2,7 +2,7 @@
 
 Projeto de um site para teste de perfil de trabalho para empresas, nele, foi utilizado HTML, CSS e JavaScript. As respostas dos usuários são salvas diretamente em um Google Sheets.
 
-> :construction: Projeto em construção :construction:
+> :white_check_mark: Projeto concluído :white_check_mark:
 
 ## 🔨 Funcionalidades do projeto
 
